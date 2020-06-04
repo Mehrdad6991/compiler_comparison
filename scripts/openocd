@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -e
+
+
+# ===== customize this =====
+
+# path to openocd executable
+OPENOCD=/home/mehrdad/RISC-V/Ariane/riscv-openocd/src/openocd
+
+# path to ariane.cfg (inside ariane repository)
+#ARIANE_CFG=/home//ariane/fpga/ariane.cfg
+
+# path to genesys2 pulpissimo cfg
+PULPISSIMO_CFG=/home/mehrdad/RISC-V/pulpissimo/pulpissimo/openocd-genesys2.cfg
+
+# ===== end customizations =====
+
+
+F="$(dirname "$0")"
+SPIKE_CFG="$F"/spike.cfg
+
+usage () {
+    echo "usage: $0 <target>" >&2
+    echo "with <target> one of ariane, spike, pulpissimo" >&2
+    exit 1
+}
+
+if [ $# -lt 1 ]; then
+    usage
+fi
+
+case "$1" in
+    ariane) cfg="$ARIANE_CFG";;
+    spike) cfg="$SPIKE_CFG";;
+    pulpissimo) cfg="$PULPISSIMO_CFG";;
+    *) usage;;
+esac
+$OPENOCD -f $cfg

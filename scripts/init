@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+VIVADO=vivado
+
+F="$(dirname "$0")"
+
+$VIVADO -nojournal -mode batch \
+    -source "$F"/program_fpga.tcl \
+    -source "$F"/monitor_temp_loop.tcl

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+# execute a previously generated set of benchmarks
+if [ $# -lt 1 ]; then
+    echo "usage: $0 <EXEC_PLATFORM>" >&2
+    exit 1
+fi
+
+# name for the platform the benchmark is supposed to be executed on
+# only used for documentation purposes
+EXEC_PLATFORM="$1"
+
+IDIR=/home/mehrdad/RISC-V/pulpissimo/pulpissimo/benchmarks/build_llvm
+ODIR=./exec_logs
+
+F="$(dirname "$0")"
+
+mkdir -p "$ODIR"
+SN="$(cat "$IDIR/generated_by.txt")"
+TS="$(date -u +%Y-%m-%dT%H:%M:%S)"
+BASENAME="$ODIR/${TS}_${SN}_${EXEC_PLATFORM}"
+LOG="$BASENAME.log"
+TIMING="$BASENAME.timing"
+
+cat "$IDIR/bins.txt" | awk -v prefix="$IDIR/" '{print prefix $0}' \
+    | "$F"/execute_batch "$TIMING" "$LOG"

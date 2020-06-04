@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+GDB=riscv32-unknown-elf-gdb
+
+t="$(mktemp)"
+$GDB "$1" -batch \
+    -ex 'target remote localhost:3333' \
+    -ex 'restore '"$1"'' \
+    -ex 'j _init' \
+    -ex 'p/d $a0' \
+    -ex 'p/d $s0' \
+    2>&1 | tee "$t" 1>&2
+rcode="$(tail -n3 "$t" | head -n1 | cut -d' ' -f3)"
+echo -n "$1 $rcode "
+tail -n2 "$t" | head -n1 | cut -d' ' -f3
+rm "$t"
+if [ "$rcode" -gt 255 -o "$rcode" -lt 0 ]; then rcode=255; fi
+exit "$rcode"
