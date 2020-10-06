@@ -4,7 +4,7 @@ From the repository scripts, run the generate32_csv.sh script:
 
    $ ./generate32_csv.sh
 
-This will create the gcc.sh and llvm.sh inside each benchmark directory. Please change the compiler path before.
+This will create the gcc.sh and llvm.sh inside each benchmark directory. Please change the compiler path before and copy this script to the root directory of benchmarks.
 
 Copy the compiler_timing_execute.sh to the root directory where benchmarks existing and run it.
 
