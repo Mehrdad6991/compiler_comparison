@@ -17,3 +17,10 @@ Then by running the collect_data.sh which is copied to the root directory beside
    $ ./collect_data.sh
    
    
+Next step is to execute the benchmark on the platform or count the number of executed instructions on the platform using spike. please copy the openocd-genesys2.cfg, program_fpga.tcl, pulpissimo_genesys2.bit, and spike.cfg before running these scripts.
+
+$ ./init
+
+$ ./openocd
+
+$ ./execute_benchmark
