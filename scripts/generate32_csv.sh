@@ -15,7 +15,7 @@ for dir in */; do
 set -euo -pipefail
 set -x
 
-export PATH=/opt/riscv32i/bin/:\$PATH
+export PATH=/.../bin/:\$PATH
 
 
 input_files="\$(ls | grep '\\.c\$')"
@@ -78,8 +78,8 @@ EOF
 set -euo -pipefail
 set -x
 
-export PATH=/opt/riscv32i/bin/:\$PATH
-#export PATH=/opt/llvm9/bin/:\$PATH
+export PATH=/.../bin/:\$PATH
+export PATH=/.../llvm10/bin/:\$PATH
 
 
 input_files="\$(ls | grep '\\.c\$')"
