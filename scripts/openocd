@@ -6,13 +6,13 @@ set -e
 # ===== customize this =====
 
 # path to openocd executable
-OPENOCD=/home/mehrdad/RISC-V/Ariane/riscv-openocd/src/openocd
+OPENOCD=/home/.../openocd
 
 # path to ariane.cfg (inside ariane repository)
 #ARIANE_CFG=/home//ariane/fpga/ariane.cfg
 
 # path to genesys2 pulpissimo cfg
-PULPISSIMO_CFG=/home/mehrdad/RISC-V/pulpissimo/pulpissimo/openocd-genesys2.cfg
+PULPISSIMO_CFG=/home/.../openocd-genesys2.cfg
 
 # ===== end customizations =====
 
