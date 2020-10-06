@@ -12,7 +12,7 @@ fi
 # only used for documentation purposes
 EXEC_PLATFORM="$1"
 
-IDIR=/home/mehrdad/RISC-V/pulpissimo/pulpissimo/benchmarks/build_llvm
+IDIR= /path /where binaries are
 ODIR=./exec_logs
 
 F="$(dirname "$0")"
